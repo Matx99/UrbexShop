@@ -34,14 +34,19 @@ class Category
     private $products;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="categoryName")
+     * @ORM\Column(type="string", length=255)
      */
     private $media;
+
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
-        $this->media = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -104,39 +109,16 @@ class Category
         return $this;
     }
 
-    /**
-     * @return Collection|Media[]
-     */
-    public function getMedia(): Collection
+    public function getMedia(): ?string
     {
         return $this->media;
     }
 
-    public function addMedium(Media $medium): self
+    public function setMedia(string $media): self
     {
-        if (!$this->media->contains($medium)) {
-            $this->media[] = $medium;
-            $medium->setCategoryName($this);
-        }
+        $this->media = $media;
 
         return $this;
     }
 
-    public function removeMedium(Media $medium): self
-    {
-        if ($this->media->contains($medium)) {
-            $this->media->removeElement($medium);
-            // set the owning side to null (unless already changed)
-            if ($medium->getCategoryName() === $this) {
-                $medium->setCategoryName(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function __toString(): string
-    {
-        return $this->name;
-    }
 }

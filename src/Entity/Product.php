@@ -50,14 +50,14 @@ class Product
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="productName")
+     * @ORM\Column(type="string", length=255)
      */
     private $media;
+
 
     public function __construct()
     {
         $this->commandLines = new ArrayCollection();
-        $this->media = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -156,34 +156,16 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection|Media[]
-     */
-    public function getMedia(): Collection
+    public function getMedia(): ?string
     {
         return $this->media;
     }
 
-    public function addMedium(Media $medium): self
+    public function setMedia(string $media): self
     {
-        if (!$this->media->contains($medium)) {
-            $this->media[] = $medium;
-            $medium->setProductName($this);
-        }
+        $this->media = $media;
 
         return $this;
     }
-
-    public function removeMedium(Media $medium): self
-    {
-        if ($this->media->contains($medium)) {
-            $this->media->removeElement($medium);
-            // set the owning side to null (unless already changed)
-            if ($medium->getProductName() === $this) {
-                $medium->setProductName(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }
