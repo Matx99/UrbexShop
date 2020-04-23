@@ -51,18 +51,32 @@ class User implements UserInterface
     private $phone;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CustomerAddress", mappedBy="name")
-     */
-    private $customerAddresses;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Orders", mappedBy="orderNumber", orphanRemoval=true)
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $postalCode;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $country;
+
     public function __construct()
     {
-        $this->customerAddresses = new ArrayCollection();
         $this->orders = new ArrayCollection();
     }
 
@@ -185,36 +199,7 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|CustomerAddress[]
-     */
-    public function getCustomerAddresses(): Collection
-    {
-        return $this->customerAddresses;
-    }
 
-    public function addCustomerAddress(CustomerAddress $customerAddress): self
-    {
-        if (!$this->customerAddresses->contains($customerAddress)) {
-            $this->customerAddresses[] = $customerAddress;
-            $customerAddress->setName($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCustomerAddress(CustomerAddress $customerAddress): self
-    {
-        if ($this->customerAddresses->contains($customerAddress)) {
-            $this->customerAddresses->removeElement($customerAddress);
-            // set the owning side to null (unless already changed)
-            if ($customerAddress->getName() === $this) {
-                $customerAddress->setName(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|Orders[]
@@ -243,6 +228,54 @@ class User implements UserInterface
                 $order->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?int
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(int $postalCode): self
+    {
+        $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
 
         return $this;
     }
