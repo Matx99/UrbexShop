@@ -13,19 +13,20 @@
             <div class="col-4 mt-4">
                 <div class="border border-dark rounded p-2 clearfix">
                     <h2>
-                        {{ product.title }}
+                        {{ product.name }}
                         -
                         {{ product.price }}
                         €
                     </h2>
-                    <img class="img-fluid rounded" src="{{ product.image }}" alt="Image de {{ product.title }}">
+                    {% for media in product.media  %}
+                        <img class="img-fluid rounded" src="{{ media.url }}" alt="{{ media.alt }}">
+                    {% endfor %}
                     <hr>
                     <a href="{{path( 'cart_add', {'id': product.id} )}}" class="btn btn-success float-right">
                         <i class="fas fa-shopping-cart mr-1"></i>
                         Ajouter
                     </a>
                 </div>
-
             </div>
         {% endfor %}
     </div>

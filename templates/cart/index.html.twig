@@ -24,7 +24,7 @@
                 <tbody>
                     {% for item in items %}
                         <tr>
-                            <td>{{ item.product.title }}</td>
+                            <td>{{ item.product.name }}</td>
                             <td>{{ item.product.price }} </td>
                             <td>
                                 <input type="number" value="{{ item.quantity }}" name="quantity{{item.product.id}}">
