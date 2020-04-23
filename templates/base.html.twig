@@ -21,12 +21,30 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('product_index') }}">Produits
+                        <a class="nav-link" href="{{ path('product_index') }}">Tous nos produits
                         </a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('category_index') }}">Catégories
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('cart_index') }}">Panier</a>
                     </li>
+                    {% if not app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link ml-auto" href="{{ path('app_login') }}">Se connecter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

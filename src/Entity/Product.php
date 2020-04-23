@@ -54,6 +54,11 @@ class Product
      */
     private $media;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mediaAlt;
+
 
     public function __construct()
     {
@@ -164,6 +169,18 @@ class Product
     public function setMedia(string $media): self
     {
         $this->media = $media;
+
+        return $this;
+    }
+
+    public function getMediaAlt(): ?string
+    {
+        return $this->mediaAlt;
+    }
+
+    public function setMediaAlt(string $mediaAlt): self
+    {
+        $this->mediaAlt = $mediaAlt;
 
         return $this;
     }

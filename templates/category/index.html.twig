@@ -3,35 +3,25 @@
 {% block title %}Category index{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+    <div class="bg-light p-3">
+        <h1>Nos catégories de produits</h1>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row">
         {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.description }}</td>
-                <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+            <div class="col-4 mt-4">
+                <a href="{{ path( 'category_show', {'id': category.id} ) }}">
+                    <div class="border border-dark rounded p-2 clearfix">
+                        <h2>
+                            {{ category.name }}
+                        </h2>
+                        <img class="img-fluid rounded" src="{{ category.media }}" alt="{{ category.mediaAlt }}">
+                        <p>
+                            {{ category.description }}
+                        </p>
+                        </a>
+                    </div>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('category_new') }}">Create new</a>
+    </div>
 {% endblock %}

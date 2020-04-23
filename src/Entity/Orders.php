@@ -19,11 +19,6 @@ class Orders
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $orderNumber;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $valid;
@@ -43,6 +38,11 @@ class Orders
      * @ORM\OneToMany(targetEntity="App\Entity\CommandLine", mappedBy="orderNumber", orphanRemoval=true)
      */
     private $commandLines;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $orderNumber;
 
     public function __construct()
     {
@@ -117,6 +117,18 @@ class Orders
                 $commandLine->setOrderNumber(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getOrderNumber(): ?int
+    {
+        return $this->orderNumber;
+    }
+
+    public function setOrderNumber(int $orderNumber): self
+    {
+        $this->orderNumber = $orderNumber;
 
         return $this;
     }
