@@ -2,12 +2,14 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
+use App\Entity\Product;
 use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use App\Entity\Product;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class ProductFixtures extends Fixture
+class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
@@ -137,5 +139,6 @@ class ProductFixtures extends Fixture
                 ->setMediaAlt('Gants tactiques');
         $manager->persist($product);
         $manager->flush();
+        
     }
 }

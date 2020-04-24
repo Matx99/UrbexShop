@@ -5,12 +5,13 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -49,17 +50,38 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
-            'editMode' => $user->getId() !== null
+            'editMode' => $user->getId() !== null,
+            'user' => $user
         ]);
     }
 
-    // /**
-    //  * @Route("/account/{id}/edit", name="account_edit")
-    //  */
-    // public function edit(User $user){
+    /**
+     * @Route("/register/master", name="create_admin")
+     */
+    public function master(UserPasswordEncoderInterface $passwordEncoder, ObjectManager $manager)
+    {
+        // user normal 
+        $roles[] = 'ROLE_ADMIN';
+        $role = array_unique($roles);
 
-    //     return $this->render('registration/edit.html.twig', [
-    //         'user' => $user,
-    //     ]);
-    // }
+        $user = new User();
+        $user->setEmail('admin@urbexshop.com')
+                ->setRoles($role)
+                ->setPassword(
+                    $passwordEncoder->encodePassword(
+                    $user,
+                    'admin'
+                ))
+                ->setName("admin")
+                ->setFirstName("admin")
+                ->setPhone('0000000000')
+                ->setAddress("admin")
+                ->setPostalCode("00000")
+                ->setCity("admin")
+                ->setCountry("admin");
+        $manager->persist($user);
+        $manager->flush();
+
+        return $this->redirectToRoute('app_login');
+    }
 }
