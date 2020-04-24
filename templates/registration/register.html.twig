@@ -3,7 +3,11 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+        {% if editMode %}
+            <h1>Modifier mon profil</h1>
+        {% else %}
+            <h1>Inscription</h1>
+        {% endif %}
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.firstName) }}
@@ -18,9 +22,9 @@
         {{ form_row(registrationForm.agreeTerms) }}
 
         {% if editMode %}
-        <button class="btn">Mettre à jour</button>
+        <button class="btn btn-primary">Mettre à jour</button>
         {% else %}
-        <button class="btn">Register</button>
+        <button class="btn btn-primary">S'inscrire</button>
         {% endif %}
     {{ form_end(registrationForm) }}
 {% endblock %}

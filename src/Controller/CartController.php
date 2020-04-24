@@ -78,8 +78,8 @@ class CartController extends AbstractController
 
         $commandline = new CommandLine();
 
-        var_dump($cartService->getFullCart());
-        exit;
+        // var_dump($cartService->getFullCart());
+        // exit;
 
         foreach($cartService->getFullCart() as $item){
             $commandline->setName($item['product']);

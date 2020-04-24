@@ -1,31 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les produits
+{% block title %}UrbexShop
 {% endblock %}
 
 {% block body %}
     <div class="bg-light p-3">
-        <h1>Les produits</h1>
+        <h1 class="text-center">Les produits</h1>
     </div>
 
     <div class="row">
         {% for product in products %}
             <div class="col-4 mt-4">
-                <div class="border border-dark rounded p-2 clearfix">
-                    <h2>
-                        {{ product.name }}
-                        -
-                        {{ product.price }}
-                        €
-                    </h2>
-                        <img class="img-fluid rounded" src="{{ product.media }}" alt="{{ product.mediaAlt }}">  
-                    <hr>
-                    <a href="{{path( 'cart_add', {'id': product.id} )}}" class="btn btn-success float-right">
-                        <i class="fas fa-shopping-cart mr-1"></i>
-                        Ajouter
-                    </a>
-                </div>
+                <a href="{{path('product_show', {'id':product.id})}}" class="unstyled-link">
+                    <div class="border border-dark rounded p-2 clearfix text-center">
+                        <h2>
+                            {{ product.name }}
+                        </h2>
+                        <hr>
+                        <p>
+                            {{ product.price }}0 €
+                        </p>
+                        <hr>
+                            <img class="img-fluid rounded" src="{{ product.media }}" alt="{{ product.mediaAlt }}">  
+                        <hr>
+                        <a href="{{path( 'cart_add', {'id': product.id} )}}" class="btn btn-success float-right">
+                            <i class="fas fa-shopping-cart mr-1"></i>
+                            Ajouter
+                        </a>
+                    </div>
+                </a>
             </div>
         {% endfor %}
     </div>
+
+{% include 'footer.html.twig' %}
+
 {% endblock %}

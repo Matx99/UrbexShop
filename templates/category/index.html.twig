@@ -4,19 +4,21 @@
 
 {% block body %}
     <div class="bg-light p-3">
-        <h1>Nos catégories de produits</h1>
+        <h1 class="text-center">Nos catégories de produits</h1>
     </div>
 
     <div class="row">
         {% for category in categories %}
             <div class="col-4 mt-4">
-                <a href="{{ path( 'category_show', {'id': category.id} ) }}">
+                <a href="{{ path( 'category_show', {'id': category.id} ) }}" class="unstyled-link">
                     <div class="border border-dark rounded p-2 clearfix">
-                        <h2>
+                        <h2 class="text-center">
                             {{ category.name }}
                         </h2>
+                        <hr>
                         <img class="img-fluid rounded" src="{{ category.media }}" alt="{{ category.mediaAlt }}">
-                        <p>
+                        <hr>
+                        <p class="text-center">
                             {{ category.description }}
                         </p>
                         </a>
@@ -24,4 +26,9 @@
             </div>
         {% endfor %}
     </div>
+    
+{% include 'footer.html.twig' %}
+
 {% endblock %}
+
+

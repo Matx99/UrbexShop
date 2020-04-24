@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" href="{{ asset('img/favicon.ico') }}" />
         <title>
             {% block title %}Welcome!
             {% endblock %}
@@ -9,6 +10,7 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"/>
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% endblock %}
     </head>
     <body>
@@ -20,19 +22,19 @@
 
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('product_index') }}">Tous nos produits
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('category_index') }}">Catégories
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{path('category_show', {id:'12'})}}">Masques
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{path('category_show', {id:'13'})}}">Lampes
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{path('category_show', {id:'14'})}}">Vêtements
                         </a>
                     </li>
@@ -49,6 +51,11 @@
                             <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
                         </li>
                     {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('account_edit', {'id':app.user.id}) }}">
+                                <i class="fas fa-user mr-1"></i> Mon compte
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </li>

@@ -1,0 +1,33 @@
+/* general */
+
+.unstyled-link:hover {
+    text-decoration: none;
+}
+
+p {
+    font-size: large;
+}
+
+/* panier */
+
+.cart input[type="number"] {
+    width:40px;
+ }
+
+/* footer */
+
+footer {
+    background: black;
+    color: white;
+    margin-top: 100px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: grey;
+}

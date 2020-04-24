@@ -5,11 +5,11 @@
 
 {% block body %}
     <div class="bg-light p-3">
-        <h1>Votre panier</h1>
+        <h1 class="text-center">Votre panier</h1>
     </div>
 
     {% if items | length > 0 %}
-        <form action="" method="get">
+        <form action="" method="get" class="cart">
             <table class="table">
                 <thead>
                     <tr>
@@ -24,19 +24,15 @@
                 <tbody>
                     {% for item in items %}
                         <tr>
-                            <td>{{ item.product.name }}</td>
-                            <td>{{ item.product.price }} </td>
-                            <td>
+                            <td class="text-center"><a href="{{path('product_show',{'id':item.product.id})}}">{{ item.product.name }}</a></td>
+                            <td class="text-center">{{ item.product.price }} </td>
+                            <td class="text-center">
                                 <input type="number" value="{{ item.quantity }}" name="quantity{{item.product.id}}">
                             </td>
-                            <td>
-                                {% if total < 1000 %}
-                                    50 (offerts au dessus de 1000 €)
-                                {% else %}
-                                    Offerts
-                                {% endif %}
+                            <td class="text-center">
+    
                             </td>
-                            <td>{{ item.product.price * item.quantity }} €</td>
+                            <td class="text-center">{{ item.product.price * item.quantity }} €</td>
                             <td>
                                 <a href="{{ path('cart_remove', {'id' : item.product.id}) }}" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i>
@@ -47,15 +43,18 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4" class="text-right">Total :</td>
-                        <td>{{ total }} €</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right">Offerts pendant <br> le confinement</td>
+                        <td class="text-center">Total : <br> {{ total }}€</td>
                         <td></td>
                     </tr>
                 </tfoot>
             </table>
             <hr>
-            <a href="{{ path('save_order') }}" class="btn btn-success float-right">
-                <i class="fas fa-shopping-cart mr-1"></i>
+            <a href="{{ path('save_order') }}" class="btn btn-success float-right" style="margin-left: 5px;">
+                <i class="fas fa-check-circle mr-1"></i>
                 Commander
             </a>
             <button type="submit" class="btn btn-success float-right">
@@ -68,4 +67,8 @@
         <p>Votre panier est vide.</p>
     {% endif %}
 
+    
+{% include 'footer.html.twig' %}
+
 {% endblock %}
+
