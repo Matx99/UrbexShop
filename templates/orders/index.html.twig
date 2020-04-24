@@ -8,23 +8,25 @@
     </div>
 
     <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>N° commande</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
         {% for order in orders %}
-            {% if order.user.id == app.user.id %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>N° commande</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Commande n°{{ order.orderNumber }}</td>
-                        <td>Effectuée le {{ order.orderedAt | date('d/m/Y à H:i') }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            {% elseif not app.user.orders %}
+            {% if order.user.id == app.user.id and app.user.orders %}
+            
+                <tr>
+                    <td>Commande n°{{ order.orderNumber }}</a></td>
+                    <td>Effectuée le {{ order.orderedAt | date('d/m/Y à H:i') }}</td>
+                </tr>
+                
+            {% else %}
+            </tbody>
+        </table>
                 <p>Vous n'avez effectué aucune commande.</p>
             {% endif %}
             
