@@ -29,7 +29,7 @@ class OrdersController extends AbstractController
      */
     public function show(Orders $order)
     {
-
+        
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         return $this->render('orders/show.html.twig', [

@@ -7,6 +7,7 @@ use App\Entity\Product;
 use App\Form\Product1Type;
 use App\Repository\MediaRepository;
 use App\Repository\ProductRepository;
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,6 +54,7 @@ class ProductController extends AbstractController
      */
     public function show(Product $product): Response
     {
+
         return $this->render('product/show.html.twig', [
             'product' => $product,
         ]);

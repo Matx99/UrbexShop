@@ -6,6 +6,9 @@
     <div class="bg-light p-3">
         <h1 class="text-center">Nos catégories de produits</h1>
     </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('category_new') }}" class="btn btn-success mt-2"><i class="fas fa-plus-circle mr-1"></i>Créer une catégorie</a>
+    {% endif %}
 
     <div class="row">
         {% for category in categories %}

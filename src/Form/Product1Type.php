@@ -18,6 +18,7 @@ class Product1Type extends AbstractType
             ->add('available')
             ->add('category')
             ->add('media')
+            ->add('mediaAlt')
         ;
     }
 

@@ -6,29 +6,37 @@
     <div class="bg-light p-3">
         <h1 class="text-center">Nos {{ category.name }}</h1>
     </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="row mt-2">
+            <a href="{{ path('category_new') }}" class="btn btn-success ml-3"><i class="fas fa-plus-circle mr-1"></i>Créer une catégorie</a>
+            <a href="{{ path('category_edit', {id:category.id}) }}" class="btn btn-warning ml-1"><i class="fas fa-edit mr-1"></i>Modifier la catégorie</a>
+        </div>
+    {% endif %}
 
     <div class="row">
         {% for product in category.products %}
-            <div class="col-4 mt-4 text-center">
-                <a href="{{ path('product_show', {id:product.id}) }}" class="unstyled-link">
-                    <div class="border border-dark rounded p-2 clearfix">
-                        <h2>
-                            {{ product.name }}
-                        </h2>
-                        <hr>
-                        <p>
-                            {{ product.price }}0 €    
-                        </p>
-                        <hr>
-                            <img class="img-fluid rounded" src="{{ product.media }}" alt="{{ product.mediaAlt }}">  
-                        <hr>
-                        <a href="{{path( 'cart_add', {'id': product.id} )}}" class="btn btn-success float-right">
-                            <i class="fas fa-shopping-cart mr-1"></i>
-                            Ajouter
-                        </a>
-                    </div>
-                </a>
-            </div>
+            {% if product.available or is_granted('ROLE_ADMIN') %}
+                <div class="col-4 mt-4 text-center">
+                    <a href="{{ path('product_show', {id:product.id}) }}" class="unstyled-link">
+                        <div class="border border-dark rounded p-2 clearfix">
+                            <h2>
+                                {{ product.name }}
+                            </h2>
+                            <hr>
+                            <p>
+                                {{ product.price }}0 €    
+                            </p>
+                            <hr>
+                                <img class="img-fluid rounded" src="{{ product.media }}" alt="{{ product.mediaAlt }}">  
+                            <hr>
+                            <a href="{{path( 'cart_add', {'id': product.id} )}}" class="btn btn-success float-right">
+                                <i class="fas fa-shopping-cart mr-1"></i>
+                                Ajouter
+                            </a>
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 

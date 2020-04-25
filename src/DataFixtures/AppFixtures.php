@@ -43,7 +43,7 @@ class AppFixtures extends Fixture
         $product->setName('Masque a Gaz Urbex 3M 6200')
                 ->setDescription("Partez à la conquête de l'Urbex en toute sécurité avec ce Masque à Gaz Urbex 3M 6200 professionnel par Urbex-Boutique ! Explorez et protégez vous avec ce masque respiratoire.")
                 ->setPrice(79.90)
-                ->setAvailable(1)
+                ->setAvailable(0)
                 ->setCategory($categoryMasques)
                 ->setMedia('https://urbexsession.com/wp-content/uploads/2013/12/masque-gaz.jpg')
                 ->setMediaAlt('Masque a Gaz Urbex 3M 6200');
