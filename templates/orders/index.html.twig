@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OrdersController!{% endblock %}
+{% block title %}Commandes{% endblock %}
 
 {% block body %}
     <div class="bg-light p-3">
@@ -25,11 +25,14 @@
                 </tr>
                 
             {% else %}
-            </tbody>
-        </table>
-                <p>Vous n'avez effectué aucune commande.</p>
+            
+                
             {% endif %}
             
         {% endfor %}
+            </tbody>
+        </table>
     </div>
+    
+    {% include 'footer.html.twig' %}
 {% endblock %}

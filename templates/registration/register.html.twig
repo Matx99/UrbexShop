@@ -1,30 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}
+    {% if editMode %}
+        Modifier mon compte
+    {% else %}
+        Inscription
+    {% endif %}
+{% endblock %}
 
 {% block body %}
         {% if editMode %}
             <h1>Modifier mon profil</h1>
         {% else %}
-            <h1>Inscription</h1>
+            <h1 class="text-center">Inscription</h1>
         {% endif %}
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.name) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.phone) }}
-        {{ form_row(registrationForm.address) }}
-        {{ form_row(registrationForm.postalCode) }}
-        {{ form_row(registrationForm.city) }}
-        {{ form_row(registrationForm.country) }}
-        {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.firstName, {
+                'attr': {'placeholder': "Nom", 'class' : 'form-control col-6 mt-3'}
+            }) }}
+        </div>
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.name, {'attr': {'placeholder': "Prénom", 'class' : 'form-control col-6 mt-2'}}) }}
+        </div>
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.email, {
+                'attr': {'placeholder': "Email", 'class' : 'form-control col-6 mt-2'}
+            }) }}
+        </div>
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.phone, {'attr': {'placeholder': "Téléphone", 'class' : 'form-control col-6 mt-2'}}) }}
+        </div>
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.address, {'attr': {'placeholder': "Adresse", 'class' : 'form-control col-6 mt-2'}}) }}
+        </div>
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.postalCode, {'attr': {'placeholder': "Code postal", 'class' : 'form-control col-6 mt-2', 'type':'number'}}) }}
+        </div>
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.city, {'attr': {'placeholder': "Ville", 'class' : 'form-control col-6 mt-2'}}) }}
+        </div>
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.country, {'attr': {'placeholder': "Pays", 'class' : 'form-control col-6 mt-2'}}) }}
+        </div>
+            <div class="row justify-content-center">
+            {{ form_errors(registrationForm.plainPassword) }}
+            {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': "Mot de passe", 'class' : 'form-control col-6 mt-2'}}) }}
+        </div>
+        <div class="row justify-content-center">
+            {{ form_widget(registrationForm.agreeTerms, {'attr': {'placeholder': "Confirmer", 'class' : 'mt-2'}}) }}
+            {{ form_label(registrationForm.agreeTerms, "J'accepte les conditions") }} 
+        </div>
 
         {% if editMode %}
-        <button class="btn btn-primary">Mettre à jour</button>
+        <div class="row justify-content-center">
+            <button class="btn btn-primary">Mettre à jour</button>
+        </div>
         {% else %}
-        <button class="btn btn-primary">S'inscrire</button>
+        <div class="row justify-content-center">
+            <button class="btn btn-primary">S'inscrire</button>
+        </div>
         {% endif %}
     {{ form_end(registrationForm) }}
+
+    {% include 'footer.html.twig' %}
 {% endblock %}
