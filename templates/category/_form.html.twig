@@ -1,5 +1,27 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_row(form.media, {'attr' : {'value':'http://placehold.it/'}} ) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    <div class="row justify-content-center">
+        {{ form_widget(form.name, {
+            'attr': {'placeholder': "Nom", 'class' : 'form-control col-6 mt-3'}
+        }) }}
+    </div>
+    <div class="row justify-content-center">
+        {{ form_widget(form.description, {
+            'attr': {'placeholder': "Description", 'class' : 'form-control col-6 mt-3'}
+        }) }}
+    </div>
+    <div class="row justify-content-center">
+        {{ form_widget(form.media, {
+            'attr': {'placeholder': "URL de l'image", 'class' : 'form-control col-6 mt-3'}
+        }) }}
+    </div>
+    <div class="row justify-content-center">
+        {{ form_widget(form.mediaAlt, {
+            'attr': {'placeholder': "Alt de l'image", 'class' : 'form-control col-6 mt-3'}
+        }) }}
+    </div>
+    <div class="row justify-content-center">
+        <button class="btn btn-primary mt-4">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+    
 {{ form_end(form) }}
