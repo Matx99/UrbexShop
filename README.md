@@ -7,6 +7,7 @@
 - `php bin/console make:migration`
 - `php bin/console d:m:m`
 - `php bin/console d:f:l --no-interaction`
+- `php bin/console server:run`
 - **Back-end:** aller sur la route /register/master pour créer un admin puis se connecter avec les identifiants email : admin@urbexshop.com et password : admin
 
 ### Didacticiel
@@ -14,8 +15,6 @@
 - Tous les produits sont affichés sur le site si l'utilisateur connecté a le rôle "ROLE_ADMIN" (pour qu'il puisse éditer le produit depuis le site - exemple du produit "Masque a Gaz Urbex 3M 6200" qui n'est pas disponible (boolean false) et accessible par les admins uniquement). Sinon, seuls les produits disponibles (boolean true) sont affichés.
 - Pour ajouter/éditer un produit, il faut être connecté en tant qu'admin et aller sur "Tous les produits" puis cliquer sur "Créer un produit". Pour éditer il faut aller sur le produit et l'éditer avec le bouton orange.
 - Pareil pour les catégories, se rendre sur les catégories en tant qu'admin.
-
-
 
 
 ### Cahier des charges :
