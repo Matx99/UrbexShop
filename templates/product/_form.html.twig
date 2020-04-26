@@ -27,19 +27,19 @@
     </div>
     <div class="row justify-content-center">
         {{ form_widget(form.category, {
-            'attr': {'placeholder': "Catégorie", 'class' : 'form-control col-6 mt-3'}
+            'attr': {'placeholder': "Catégorie", 'class' : 'form-control col-6 mt-3 mb-2'}
         }) }}
     </div>
     <div class="row justify-content-center">
         {{ form_widget(form.available, {
-            'attr': {'placeholder': "Disponible", 'class' : 'mt-3'}
+            'attr': {'placeholder': "Disponible", 'class' : 'mt-2'}
         }) }}
-        {{ form_label(form.available, "Disponible") }} 
+        {{ form_label(form.available, "Disponible", { 'label_attr': {'class': 'mt-1 ml-2'}}) }} 
     </div>
 
 
     <div class="row justify-content-center">
-        <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        <button class="btn btn-success mt-1">{{ button_label|default('Enregistrer') }}</button>
     </div>
 
 {{ form_end(form) }}

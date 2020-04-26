@@ -10,7 +10,7 @@
 
 {% block body %}
         {% if editMode %}
-            <h1>Modifier mon profil</h1>
+            <h1 class="text-center">Modifier mon profil</h1>
         {% else %}
             <h1 class="text-center">Inscription</h1>
         {% endif %}
@@ -46,19 +46,19 @@
         </div>
             <div class="row justify-content-center">
             {{ form_errors(registrationForm.plainPassword) }}
-            {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': "Mot de passe", 'class' : 'form-control col-6 mt-2'}}) }}
+            {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': "Mot de passe", 'class' : 'form-control col-6 mt-2 mb-3'}}) }}
         </div>
         <div class="row justify-content-center">
             {{ form_widget(registrationForm.agreeTerms, {'attr': {'placeholder': "Confirmer", 'class' : 'mt-2'}}) }}
-            {{ form_label(registrationForm.agreeTerms, "J'accepte les conditions") }} 
+            {{ form_label(registrationForm.agreeTerms, "J'accepte les conditions", { 'label_attr': {'class': 'mt-1 ml-2'}}) }} 
         </div>
 
         {% if editMode %}
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-2">
             <button class="btn btn-primary">Mettre à jour</button>
         </div>
         {% else %}
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-2">
             <button class="btn btn-primary">S'inscrire</button>
         </div>
         {% endif %}

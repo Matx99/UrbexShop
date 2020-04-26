@@ -78,9 +78,6 @@ class CartController extends AbstractController
 
         $commandline = new CommandLine();
 
-        // var_dump($cartService->getFullCart());
-        // exit;
-
         foreach($cartService->getFullCart() as $item){
             $commandline->setName($item['product']);
             $commandline->setQuantity($item['quantity']);
@@ -91,7 +88,7 @@ class CartController extends AbstractController
 
 
         return $this->redirectToRoute('orders',[
-            'order' => ' Your order have been saved',
+            'order' => 'Your orders have been saved',
          ]);
     }
 }
