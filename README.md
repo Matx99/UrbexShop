@@ -4,7 +4,6 @@
 
 - `composer install`
 - `php bin/console doctrine:database:create`
-- `php bin/console make:migration`
 - `php bin/console d:m:m`
 - `php bin/console d:f:l --no-interaction`
 - `php bin/console server:run`
