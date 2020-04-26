@@ -14,7 +14,7 @@
         {% for category in categories %}
             <div class="col-4 mt-4">
                 <a href="{{ path( 'category_show', {'id': category.id} ) }}" class="unstyled-link">
-                    <div class="border border-dark rounded p-2 clearfix">
+                    <div class="border border-dark p-2 clearfix">
                         <h2 class="text-center">
                             {{ category.name }}
                         </h2>

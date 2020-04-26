@@ -16,16 +16,16 @@
             {% if product.available or is_granted('ROLE_ADMIN') %}
                 <div class="col-4 mt-4">
                     <a href="{{path('product_show', {'id':product.id})}}" class="unstyled-link">
-                        <div class="border border-dark rounded p-2 clearfix text-center">
+                        <div class="border border-dark p-2 clearfix text-center">
                             <h2>
                                 {{ product.name }}
                             </h2>
                             <hr>
                             <p>
-                                {{ product.price }}0 €
+                                {{ product.price }} €
                             </p>
                             <hr>
-                                <img class="img-fluid rounded" src="{{ product.media }}" alt="{{ product.mediaAlt }}">  
+                                <img class="img-fluid" src="{{ product.media }}" alt="{{ product.mediaAlt }}">  
                             <hr>
                             <a href="{{path( 'cart_add', {'id': product.id} )}}" class="btn btn-success float-right">
                                 <i class="fas fa-shopping-cart mr-1"></i>
