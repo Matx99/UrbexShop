@@ -7,6 +7,7 @@
 - `php bin/console make:migration`
 - `php bin/console d:m:m`
 - `php bin/console d:f:l --no-interaction`
+- Aller sur la route /register/master pour créer un admin puis se connecter avec les identifiants email : admin@urbexshop.com et password : admin
 
 
 ### Cahier des charges :
